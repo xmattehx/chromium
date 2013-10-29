@@ -191,7 +191,7 @@ else
   ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /usr/lib/libnpjp2.so
   ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /opt/google/chrome/libnpjp2.so
 fi
-curl -L https://raw.github.com/gist/3065781/99java > /etc/env.d/99java
+curl -L https://gist.github.com/dz0ny/3065781/raw/9e3d43dc37e054acd9291641896e559cae11629c/99java > /etc/env.d/99java
 
 env-update
 restart ui
