@@ -156,42 +156,42 @@ rm -rf chrome-unstable
 
 
 ## Google Talk
-echo "Downloading Google Talk plugin"
-curl -z "/opt/talk-bin.deb" -o "/opt/talk-bin.deb" -L $TALK
+#echo "Downloading Google Talk plugin"
+#curl -z "/opt/talk-bin.deb" -o "/opt/talk-bin.deb" -L $TALK
 
-python /opt/deb2tar.py /opt/talk-bin.deb /opt/talk.tar.gz
-rm /opt/talk-bin.deb
-rm -rf /opt/google/talkplugin
+#python /opt/deb2tar.py /opt/talk-bin.deb /opt/talk.tar.gz
+#rm /opt/talk-bin.deb
+#rm -rf /opt/google/talkplugin
 
-tar -xvf /opt/talk.tar.gz -C /
-rm /opt/google/chrome/pepper/libnpgoogletalk.so
-ln -s /opt/google/talkplugin/libnpgoogletalk.so /opt/google/chrome/pepper/libnpgoogletalk.so
-rm /opt/google/chrome/pepper/libnpgtpo3dautoplugin.so
-ln -s /opt/google/talkplugin/libnpgtpo3dautoplugin.so /opt/google/chrome/pepper/libnpgtpo3dautoplugin.so
+#tar -xvf /opt/talk.tar.gz -C /
+#rm /opt/google/chrome/pepper/libnpgoogletalk.so
+#ln -s /opt/google/talkplugin/libnpgoogletalk.so /opt/google/chrome/pepper/libnpgoogletalk.so
+#rm /opt/google/chrome/pepper/libnpgtpo3dautoplugin.so
+#ln -s /opt/google/talkplugin/libnpgtpo3dautoplugin.so /opt/google/chrome/pepper/libnpgtpo3dautoplugin.so
 
-rm /opt/talk.tar.gz
+#rm /opt/talk.tar.gz
 
 ## JAVA
 ## JAVA
-echo "Downloading Oracle Java"
-curl -z "/opt/java-bin.tar.gz" -o "/opt/java-bin.tar.gz" -L $JAVA
+#echo "Downloading Oracle Java"
+#curl -z "/opt/java-bin.tar.gz" -o "/opt/java-bin.tar.gz" -L $JAVA
 
-rm -rf /usr/lib/jvm/java-7-oracle/jre/
-mkdir -p /usr/lib/jvm/java-7-oracle/jre/
-tar -xvf /opt/java-bin.tar.gz -C /usr/lib/jvm/java-7-oracle/jre/ --strip-components 1
-rm /usr/lib/cromo/libnpjp2.so
-if [ `uname -m` == 'x86_64' ]; then
-  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /usr/lib64/cromo/libnpjp2.so
-  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /usr/lib64/mozilla/plugins/libnpjp2.so
-  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /usr/lib64/libnpjp2.so
-  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /opt/google/chrome/libnpjp2.so
-else
-  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /usr/lib/cromo/libnpjp2.so
-  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /usr/lib/mozilla/plugins/libnpjp2.so
-  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /usr/lib/libnpjp2.so
-  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /opt/google/chrome/libnpjp2.so
-fi
-curl -L https://gist.github.com/dz0ny/3065781/raw/9e3d43dc37e054acd9291641896e559cae11629c/99java > /etc/env.d/99java
+#rm -rf /usr/lib/jvm/java-7-oracle/jre/
+#mkdir -p /usr/lib/jvm/java-7-oracle/jre/
+#tar -xvf /opt/java-bin.tar.gz -C /usr/lib/jvm/java-7-oracle/jre/ --strip-components 1
+#rm /usr/lib/cromo/libnpjp2.so
+#if [ `uname -m` == 'x86_64' ]; then
+#  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /usr/lib64/cromo/libnpjp2.so
+#  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /usr/lib64/mozilla/plugins/libnpjp2.so
+#  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /usr/lib64/libnpjp2.so
+#  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /opt/google/chrome/libnpjp2.so
+#else
+#  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /usr/lib/cromo/libnpjp2.so
+#  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /usr/lib/mozilla/plugins/libnpjp2.so
+#  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /usr/lib/libnpjp2.so
+#  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /opt/google/chrome/libnpjp2.so
+#fi
+#curl -L https://gist.github.com/dz0ny/3065781/raw/9e3d43dc37e054acd9291641896e559cae11629c/99java > /etc/env.d/99java
 
-#env-update
-#restart ui
+env-update
+restart ui
