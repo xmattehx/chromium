@@ -171,5 +171,27 @@ ln -s /opt/google/talkplugin/libnpgtpo3dautoplugin.so /opt/google/chrome/pepper/
 
 rm /opt/talk.tar.gz
 
+## JAVA
+## JAVA
+echo "Downloading Oracle Java"
+curl -z "/opt/java-bin.tar.gz" -o "/opt/java-bin.tar.gz" -L $JAVA
+
+rm -rf /usr/lib/jvm/java-7-oracle/jre/
+mkdir -p /usr/lib/jvm/java-7-oracle/jre/
+tar -xvf /opt/java-bin.tar.gz -C /usr/lib/jvm/java-7-oracle/jre/ --strip-components 1
+rm /usr/lib/cromo/libnpjp2.so
+if [ `uname -m` == 'x86_64' ]; then
+  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /usr/lib64/cromo/libnpjp2.so
+  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /usr/lib64/mozilla/plugins/libnpjp2.so
+  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /usr/lib64/libnpjp2.so
+  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/amd64/libnpjp2.so /opt/google/chrome/libnpjp2.so
+else
+  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /usr/lib/cromo/libnpjp2.so
+  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /usr/lib/mozilla/plugins/libnpjp2.so
+  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /usr/lib/libnpjp2.so
+  ln -s /usr/lib/jvm/java-7-oracle/jre/lib/i386/libnpjp2.so /opt/google/chrome/libnpjp2.so
+fi
+curl -L https://raw.github.com/gist/3065781/99java > /etc/env.d/99java
+
 env-update
 restart ui
