@@ -193,5 +193,5 @@ else
 fi
 curl -L https://gist.github.com/dz0ny/3065781/raw/9e3d43dc37e054acd9291641896e559cae11629c/99java > /etc/env.d/99java
 
-env-update
-restart ui
+#env-update
+#restart ui
